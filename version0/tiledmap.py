@@ -18,8 +18,10 @@ class CircularTileMap(object):
         del self._field[creature._x % self._length]._childs[creature._ind]
         for ind in range(len(self._field[creature._x % self._length]._childs)):
             self._field[creature._x % self._length]._childs[ind]._ind = ind
+        res = (len(self._field[x % self._length]._childs) == 0)
         self._field[x % self._length]._childs += [creature]
         creature.OnMove(x % self._length, y, len(self._field[x % self._length]._childs) - 1)
+        return res
 
     def RemoveCreature(self, creature):
         del self._field[creature._x % self._length]._childs[creature._ind]

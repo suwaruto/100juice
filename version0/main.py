@@ -10,10 +10,9 @@ def main():
     i = 1
     while GM.running:
         for player in GM.GetPlayers(): 
-            GM.PerformAction(0, player, i)
-            print(GM.GetStatus())
-        i += 1
-            
+            if player.IsActive():
+                GM.PerformAction(player.QueryAction(), player)
+                print(GM.GetStatus())
             
 if __name__ == "__main__":
     main()
